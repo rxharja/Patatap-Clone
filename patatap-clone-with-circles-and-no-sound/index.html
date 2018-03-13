@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Patatap Clone (with circles and no sound)</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <html>
+  <head>
+    <title>Patatap Clone</title>
+    <script type="text/paperscript" canvas="myCanvas">
+
+    var keyData = {
+      q: {
+        color: '#1abc9c'
+      },
+      w: {
+        color: '#2ecc71'
+      },
+      e: {
+        color: '#3498db'
+      },
+      r: {
+        color: '#9b59b6'
+      },
+        t: {
+        color: '#34495e'
+      },
+      y: {
+        color: '#16a085'
+      },
+      u: {
+        color: '#27ae60'
+      },
+      i: {
+        color: '#2980b9'
+      },
+      o: {
+        color: '#8e44ad'
+      },
+      p: {
+        color: '#2c3e50'
+      },
+      a: {
+        color: '#f1c40f'
+      },
+      s: {
+        color: '#e67e22'
+      },
+        d: {
+        color: '#e74c3c'
+      },
+      f: {
+        color: '#95a5a6'
+      },
+      g: {
+        color: '#f39c12'
+      },
+      h: {
+        color: '#d35400'
+      },
+      j: {
+        color: '#1abc9c'
+      },
+      k: {
+        color: '#2ecc71'
+      },
+      l: {
+        color: '#3498db'
+      },
+      z: {
+        color: '#9b59b6'
+      },
+      x: {
+        color: '#34495e'
+      },
+      c: {
+        color: '#16a085'
+      },
+      v: {
+        color: '#27ae60'
+      },
+      b: {
+        color: '#2980b9'
+      },
+      n: {
+        color: '#8e44ad'
+      },
+      m: {
+        color: '#2c3e50'
+      }
+    };
+
+      var circles = [];
+      function onKeyDown(event){
+        if (keyData[event.key]){
+          var maxPoint = new Point(view.size.width, view.size.height);
+          var randomPoint = Point.random();
+          var point = maxPoint * randomPoint;
+          var newCircle = new Path.Circle(point,500);
+          newCircle.fillColor = keyData[event.key].color;
+          circles.push(newCircle);
+        }
+      }
+
+      function onFrame(event) {
+        for (var i = 0;i < circles.length; i++){
+          circles[i].fillColor.hue++;
+          circles[i].scale(.9);
+          if(circles[i].area < 1){
+          circles[i].remove();
+          circles.splice(i, 1);
+          i--;
+    }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="myCanvas" resize></canvas>
+  </body>
+</html>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.5/paper-full.js'></script>
+
+  
+
+</body>
+
+</html>
